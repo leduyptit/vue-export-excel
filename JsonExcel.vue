@@ -140,21 +140,21 @@ export default {
 		*/
     jsonToXLS(data) {
       let xlsTemp =
-        '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><meta name=ProgId content=Excel.Sheet> <meta name=Generator content="Microsoft Excel 11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>${worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><style>br {mso-data-placement: same-cell;}</style></head><body><table>${table}</table></body></html>';
+        '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><meta name=ProgId content=Excel.Sheet> <meta name=Generator content="Microsoft Excel 11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>${worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><style>br {mso-data-placement: same-cell;}</style></head><body><table style="border: 1px solid #dddddd;">${table}</table></body></html>';
       let xlsData = "<thead>";
-      const colspan = Object.keys(data[0]).length;
+      const colspan = Object.keys(data[0]).length - 2;
       let _self = this;
 
       //Header
       if (this.title != null) {
         xlsData += this.parseExtraData(
           this.title,
-          '<tr><th colspan="' + colspan + '">${data}</th></tr>'
+          '<tr><th colspan="2" style="text-align: center"><img src="https://www.flc.vn/countdown-2019/images/FLC_Group.png"></th><th colspan="' + colspan + '" style="text-align: center; text-transform: uppercase; font-size: 18px; font-weight: bold;">${data}</th></tr>'
         );
       }
 
       //Fields
-      xlsData += "<tr>";
+      xlsData += "<tr style='background-color: #409EFF; color: #FFFFFF'>";
       for (let key in data[0]) {
         xlsData += "<th>" + key + "</th>";
       }
