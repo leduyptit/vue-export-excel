@@ -149,12 +149,12 @@ export default {
       if (this.title != null) {
         xlsData += this.parseExtraData(
           this.title,
-          '<tr><th colspan="2" style="text-align: center"><img src="https://www.flc.vn/countdown-2019/images/FLC_Group.png"></th><th colspan="' + colspan + '" style="text-align: center; text-transform: uppercase; font-size: 18px; font-weight: bold;">${data}</th></tr>'
+          '<tr style="height: 80px"><th colspan="2" style="text-align: center"><img src="https://www.flc.vn/countdown-2019/images/FLC_Group.png" style="max-width: 120px"></th><th colspan="' + colspan + '" style="text-align: center; text-transform: uppercase; font-size: 18px; font-weight: bold;">${data}</th></tr>'
         );
       }
 
       //Fields
-      xlsData += "<tr style='background-color: #409EFF; color: #FFFFFF'>";
+      xlsData += "<tr style='background-color: #409EFF; color: #FFFFFF; height: 50px'>";
       for (let key in data[0]) {
         xlsData += "<th>" + key + "</th>";
       }
