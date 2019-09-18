@@ -140,7 +140,7 @@ export default {
 		*/
     jsonToXLS(data) {
       let xlsTemp =
-        '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><meta name=ProgId content=Excel.Sheet> <meta name=Generator content="Microsoft Excel 11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>${worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><style>br {mso-data-placement: same-cell;} table, td, th{border:1px solid black}  table{border-collapse:collapse} </style></head><body><table style="font-size: 16px;">${table}</table></body></html>';
+        '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><meta name=ProgId content=Excel.Sheet> <meta name=Generator content="Microsoft Excel 11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>${worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><style>br {mso-data-placement: same-cell;} table, td, th{border: .5px solid black, font-size: 17px;}  table{border-collapse:collapse; font-size: 17px;} </style></head><body><table style="font-size: 17px;">${table}</table></body></html>';
       let xlsData = "<thead>";
       const colspan = Object.keys(data[0]).length - 2;
       let _self = this;
@@ -165,11 +165,11 @@ export default {
       //Data
       xlsData += "<tbody>";
       data.map(function(item, index) {
-        var stt = index++;
+        var stt = index+1;
         xlsData += "<tr>";
-        xlsData += "<td style='padding: 5px 10px'>" + stt + "</td>";
+        xlsData += "<td style='padding: 10px'>" + stt + "</td>";
         for (let key in item) {
-          xlsData += "<td style='padding: 5px 10px'>" + _self.valueReformattedForMultilines(item[key]) + "</td>";
+          xlsData += "<td style='padding: 10px'>" + _self.valueReformattedForMultilines(item[key]) + "</td>";
         }
         xlsData += "</tr>";
       });
