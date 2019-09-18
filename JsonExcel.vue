@@ -140,7 +140,7 @@ export default {
 		*/
     jsonToXLS(data) {
       let xlsTemp =
-        '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><meta name=ProgId content=Excel.Sheet> <meta name=Generator content="Microsoft Excel 11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>${worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><style>br {mso-data-placement: same-cell;}</style></head><body><table style="border: 0.5px solid #000; border-collapse: collapse; font-size: 14px;">${table}</table></body></html>';
+        '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><meta name=ProgId content=Excel.Sheet> <meta name=Generator content="Microsoft Excel 11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>${worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><style>br {mso-data-placement: same-cell;}</style></head><body><table style="border: 0.5px solid #000; border-collapse: collapse; font-size: 18px;">${table}</table></body></html>';
       let xlsData = "<thead>";
       const colspan = Object.keys(data[0]).length - 2;
       let _self = this;
@@ -154,7 +154,8 @@ export default {
       }
 
       //Fields
-      xlsData += "<tr style='background-color: #409EFF; color: #FFFFFF; height: 40px'>";
+      xlsData += "<tr style='background-color: #409EFF; color: #000; height: 40px'>";
+      xlsData += "<th style='border: 0.5px solid #000;'>STT</th>";
       for (let key in data[0]) {
         xlsData += "<th style='border: 0.5px solid #000;'>" + key + "</th>";
       }
@@ -165,6 +166,7 @@ export default {
       xlsData += "<tbody>";
       data.map(function(item, index) {
         xlsData += "<tr>";
+        xlsData += "<td style='border: 0.5px solid #000;'>" + index + "</td>";
         for (let key in item) {
           xlsData += "<td style='border: 0.5px solid #000;'>" + _self.valueReformattedForMultilines(item[key]) + "</td>";
         }
