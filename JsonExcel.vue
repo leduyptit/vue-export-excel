@@ -140,7 +140,7 @@ export default {
 		*/
     jsonToXLS(data) {
       let xlsTemp =
-        '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><meta name=ProgId content=Excel.Sheet> <meta name=Generator content="Microsoft Excel 11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>${worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><style>br {mso-data-placement: same-cell;}</style></head><body><table>${table}</table></body></html>';
+        '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><meta name=ProgId content=Excel.Sheet> <meta name=Generator content="Microsoft Excel 11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>${worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><style>br {mso-data-placement: same-cell;}</style></head><body><table style="border: 1px solid #ddd;">${table}</table></body></html>';
       let xlsData = "<thead>";
       const colspan = Object.keys(data[0]).length - 2;
       let _self = this;
@@ -149,14 +149,14 @@ export default {
       if (this.title != null) {
         xlsData += this.parseExtraData(
           this.title,
-          '<tr style="height: 70px"><th colspan="2" style="text-align: center; border: 1px solid #000;"><img src="http://vendor.flc.vn/logo.png" style="max-width: 120px"></th><th colspan="' + colspan + '" style="text-align: center; text-transform: uppercase; font-size: 18px; font-weight: bold; border: 1px solid #000;">${data}</th></tr>'
+          '<tr style="height: 70px"><th colspan="2" style="text-align: center"><img src="http://vendor.flc.vn/logo.png" style="max-width: 120px"></th><th colspan="' + colspan + '" style="text-align: center; text-transform: uppercase; font-size: 18px; font-weight: bold;">${data}</th></tr>'
         );
       }
 
       //Fields
       xlsData += "<tr style='background-color: #409EFF; color: #FFFFFF; height: 50px'>";
       for (let key in data[0]) {
-        xlsData += "<th style='border: 1px solid #000;'>" + key + "</th>";
+        xlsData += "<th>" + key + "</th>";
       }
       xlsData += "</tr>";
       xlsData += "</thead>";
@@ -166,7 +166,7 @@ export default {
       data.map(function(item, index) {
         xlsData += "<tr>";
         for (let key in item) {
-          xlsData += "<td  style='border: 1px solid #000;'>" + _self.valueReformattedForMultilines(item[key]) + "</td>";
+          xlsData += "<td>" + _self.valueReformattedForMultilines(item[key]) + "</td>";
         }
         xlsData += "</tr>";
       });
@@ -177,7 +177,7 @@ export default {
         xlsData += "<tfoot>";
         xlsData += this.parseExtraData(
           this.footer,
-          '<tr><td colspan="' + colspan + '"  style="border: 1px solid #000">${data}</td></tr>'
+          '<tr><td colspan="' + colspan + '">${data}</td></tr>'
         );
         xlsData += "</tfoot>";
       }
